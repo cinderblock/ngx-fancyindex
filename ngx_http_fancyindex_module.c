@@ -1045,14 +1045,6 @@ ngx_http_fancyindex_cmp_entries_name_desc(const void *one, const void *two)
     ngx_http_fancyindex_entry_t *first = (ngx_http_fancyindex_entry_t *) one;
     ngx_http_fancyindex_entry_t *second = (ngx_http_fancyindex_entry_t *) two;
 
-    /* move the directories to the start */
-    if (first->dir && !second->dir) {
-        return -1;
-    }
-    if (!first->dir && second->dir) {
-        return 1;
-    }
-
     return (int) ngx_strcmp(second->name.data, first->name.data);
 }
 
@@ -1062,14 +1054,6 @@ ngx_http_fancyindex_cmp_entries_size_desc(const void *one, const void *two)
 {
     ngx_http_fancyindex_entry_t *first = (ngx_http_fancyindex_entry_t *) one;
     ngx_http_fancyindex_entry_t *second = (ngx_http_fancyindex_entry_t *) two;
-
-    /* move the directories to the start */
-    if (first->dir && !second->dir) {
-        return -1;
-    }
-    if (!first->dir && second->dir) {
-        return 1;
-    }
 
     return second->size - first->size;
 }
@@ -1081,14 +1065,6 @@ ngx_http_fancyindex_cmp_entries_mtime_desc(const void *one, const void *two)
     ngx_http_fancyindex_entry_t *first = (ngx_http_fancyindex_entry_t *) one;
     ngx_http_fancyindex_entry_t *second = (ngx_http_fancyindex_entry_t *) two;
 
-    /* move the directories to the start */
-    if (first->dir && !second->dir) {
-        return -1;
-    }
-    if (!first->dir && second->dir) {
-        return 1;
-    }
-
     return second->mtime - first->mtime;
 }
 
@@ -1098,14 +1074,6 @@ ngx_http_fancyindex_cmp_entries_name_asc(const void *one, const void *two)
 {
     ngx_http_fancyindex_entry_t *first = (ngx_http_fancyindex_entry_t *) one;
     ngx_http_fancyindex_entry_t *second = (ngx_http_fancyindex_entry_t *) two;
-
-    /* move the directories to the start */
-    if (first->dir && !second->dir) {
-        return -1;
-    }
-    if (!first->dir && second->dir) {
-        return 1;
-    }
 
     return (int) ngx_strcmp(first->name.data, second->name.data);
 }
@@ -1117,14 +1085,6 @@ ngx_http_fancyindex_cmp_entries_size_asc(const void *one, const void *two)
     ngx_http_fancyindex_entry_t *first = (ngx_http_fancyindex_entry_t *) one;
     ngx_http_fancyindex_entry_t *second = (ngx_http_fancyindex_entry_t *) two;
 
-    /* move the directories to the start */
-    if (first->dir && !second->dir) {
-        return -1;
-    }
-    if (!first->dir && second->dir) {
-        return 1;
-    }
-
     return first->size - second->size;
 }
 
@@ -1134,14 +1094,6 @@ ngx_http_fancyindex_cmp_entries_mtime_asc(const void *one, const void *two)
 {
     ngx_http_fancyindex_entry_t *first = (ngx_http_fancyindex_entry_t *) one;
     ngx_http_fancyindex_entry_t *second = (ngx_http_fancyindex_entry_t *) two;
-
-    /* move the directories to the start */
-    if (first->dir && !second->dir) {
-        return -1;
-    }
-    if (!first->dir && second->dir) {
-        return 1;
-    }
 
     return first->mtime - second->mtime;
 }
